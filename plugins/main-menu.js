@@ -160,7 +160,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     
-    let pp = 'https://qu.ax/sevU.mp4'
+  let pp = 'https://qu.ax/sevU.mp4'
     let pp2 ='https://qu.ax/GcCeS.mp4'
     let pp3 = 'https://qu.ax/SYMtH.mp4'
     let pp4 = 'https://qu.ax/PPJiV.mp4'
@@ -168,7 +168,15 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     let pp6 = 'https://qu.ax/NkzdB.mp4'
     let pp7 = 'https://qu.ax/NkzdB.mp4'
     let pp8 = 'https://qu.ax/PPJiV.mp4'
+    let pp9 = ''
+    let pp10 = ''
+    let pp11 = ''
+    let pp12 = ''
+    let pp13 = ''
+    let pp14 = ''
+    let pp15 = ''
     let img = `./storage/img/menu.jpg`
+    
     await m.react('⭐')
    // await conn.sendMessage(m.chat, { video: { url: [pp, pp2, pp3, pp4, pp5, pp6, pp7, pp8, pp9, pp10, pp11, pp12, pp13, pp14, pp15].getRandom() }, gifPlayback: true, caption: text.trim(), mentions: [m.sender] }, { quoted: estilo })
     await conn.sendFile(m.chat, img, 'thumbnail.jpg', text.trim(), m, null, rcanal)
