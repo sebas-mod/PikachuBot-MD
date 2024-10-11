@@ -160,14 +160,14 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     
-  let pp = 'https://qu.ax/sevU.mp4'
-    let pp2 ='https://qu.ax/GcCeS.mp4'
-    let pp3 = 'https://qu.ax/SYMtH.mp4'
-    let pp4 = 'https://qu.ax/PPJiV.mp4'
-    let pp5 = 'https://qu.ax/Golg.mp4'
-    let pp6 = 'https://qu.ax/NkzdB.mp4'
-    let pp7 = 'https://qu.ax/NkzdB.mp4'
-    let pp8 = 'https://qu.ax/PPJiV.mp4'
+  let pp = ''
+    let pp2 =''
+    let pp3 = ''
+    let pp4 = ''
+    let pp5 = ''
+    let pp6 = ''
+    let pp7 = ''
+    let pp8 = ''
     let pp9 = ''
     let pp10 = ''
     let pp11 = ''
