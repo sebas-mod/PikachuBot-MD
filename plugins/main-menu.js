@@ -56,7 +56,7 @@ const defaultMenu = {
 
 \t\t\t*L I S T A  -  M E N Ú S*
 `.trimStart(),
-  header: '╭«★»-----(`  %category`)-----«★»\n│╭«★»----------',
+  header: '╭«★»-----(%category)-----«★»\n│╭«★»----------',
   body: '│⋆⃟ۣۜ᭪➣%cmd %islimit %isPremium\n',
   footer: '│╰«★»----------\n╰«★»----------()----------«★»\n',
   after: `> 🚩 ${textbot}`,
