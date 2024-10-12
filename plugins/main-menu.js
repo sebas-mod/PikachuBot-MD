@@ -2,68 +2,83 @@ import { promises } from 'fs'
 import { join } from 'path'
 import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
-
+let Styles = (text, style = 1) => {
+  var xStr = 'abcdefghijklmnopqrstuvwxyz1234567890'.split('');
+  var yStr = Object.freeze({
+    1: 'ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘqʀꜱᴛᴜᴠᴡxʏᴢ1234567890'
+  });
+  var replacer = [];
+  xStr.map((v, i) => replacer.push({
+    original: v,
+    convert: yStr[style].split('')[i]
+  }));
+  var str = text.toLowerCase().split('');
+  var output = [];
+  str.map(v => {
+    const find = replacer.find(x => x.original == v);
+    find ? output.push(find.convert) : output.push(v);
+  });
+  return output.join('');
+};
 let tags = {
-  'main': '𝐈𝐍𝐅𝐎 📚',
-  'search': 'SEARCH',
-  'game': '𝐉𝐔𝐄𝐆𝐎𝐒 🎮',
-  'serbot': '𝐒𝐔𝐁 𝐁𝐎𝐓𝐒 🤖',
-  'rpg': '𝐑𝐏𝐆 🌠',
-  'rg': '𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐎 📁',
-  'sticker': '𝐒𝐓𝐈𝐂𝐊𝐄𝐑𝐒 🏞',
-  'img': 'IMAGE',
-  'group': '𝐆𝐑𝐔𝐏𝐎𝐒 👥',
+  'group': '👥 GROUPS 📢',
+  'downloader': '📥 DOWNLOAD 📤',
+  'rpg': '🌐 RPG 🥇',
+  'owner': '👤 OWNER 👁️', 
+  'anime': '🧧 ANIME 🎐',
+  'main': '❗ INFO ❕',
+  'search': '🔎 SEARCH 🔍',
+  'game': '🕹️ GAME 🎮',
+  'serbot': '⚙️ SUB BOTS 🤖',
+  'rg': '🎑 REGISTRO 🎟️',
+  'sticker': '💟 STICKER 🏷️',
+  'img': '🖼️ IMAGE 🎇',
 //  'logo': 'MAKER',
-  'nable': '𝐎𝐍 / 𝐎𝐅𝐅 📴', 
-  'premium': 'PREMIUM',
-  'downloader': '𝐃𝐄𝐒𝐂𝐀𝐑𝐆𝐀𝐒 📥',
-  'tools': '𝐇𝐄𝐑𝐑𝐀𝐌𝐈𝐄𝐍𝐓𝐀𝐒 🔧',
-  'fun': 'FUN',
-  'nsfw': '𝐍𝐒𝐅𝐖 🔞', 
-  'cmd': '𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄 ✨️',
-  'owner': '𝐂𝐑𝐄𝐀𝐃𝐎𝐑 👑', 
-  'audio': '𝐀𝐔𝐃𝐈𝐎𝐒 🔉', 
-  'advanced': 'ADVANCED',
+  'nable': '🎛️ ON / OFF 🔌', 
+  'premium': '💎 PREMIUM 👑',
+  'tools': '🔧 TOOLS 🛠️',
+  'fun': '🎉 FUN 🎊',
+  'nsfw': '🔞 NSFW 📛', 
+  'cmd': '🧮 DATABASE 🖥️',
+  'audio': '📣 AUDIOS 🔊', 
+  'advanced': '🗝️ ADVANCED 📍',
 }
 
+
 const defaultMenu = {
-  before: `*•°•°•°•°•°•°•°•°•°•°•°*
-          
-“ Hola *%name* *soy Pikachu-Bot-MD*, %greeting ”
-
-╭«★»--------『info - Bot』--------«★»
-│╭───────────────···
-│⋆⃟ۣۜ᭪➣ 🍟 *Bot:* Pikachu-Bot-MD
-│⋆⃟ۣۜ᭪➣🍂 *Modo* Privado
-│⋆⃟ۣۜ᭪➣ ✨️ *Baileys:* Multi Device
-│⋆⃟ۣۜ᭪➣ ⌛️ *Tiempo Activo:* %muptime
-│⋆⃟ۣۜ᭪➣ 🫂 *Usuarios:* %totalreg
-│╰────────────────···
-╰────────═┅═─────────
-%readmore
-╭«★»--------『info - user』--------«★»
-│╭───────────────···
-│⋆⃟ۣۜ᭪➣ 🚩 *usuario:* %name
-│⋆⃟ۣۜ᭪➣ 💥 *Exp:* %exp
-│⋆⃟ۣۜ᭪➣ 🌟 *Estrellas:* %estrellas
-│⋆⃟ۣۜ᭪➣🐢 *Nivel:* %level
-│⋆⃟ۣۜ᭪➣⚓ *Rango:* %role
-│╰────────────────···
-╰────────═┅═─────────
-%readmore
-*•°•°•°•°•°•°•°•°•°•°•°*
-
-
-\t\t\t*L I S T A  -  M E N Ú S*
+  before: `
+▣╾─✦──✦─🤍─✦──✦─╼▣
+-----------🅔🅛🅐🅘🅝🅐------------------
+⧣₊˚﹒✦₊  ⧣₊˚  𓂃★    ⸝⸝ ⧣₊˚﹒✦₊  ⧣₊˚
+      /)    /)
+    (｡•ㅅ•｡)〝₎₎ 「 🄸🄽🄵🄾 」 ✦₊ ˊ˗
+. .╭∪─∪────────── ✦ ⁺.
+. .┊ ◟﹫ Name : %name
+. .┊﹒𐐪 Eris : %limit
+. .┊ꜝꜝ﹒Nivel : %level
+. .┊ ⨳゛Xp : %exp
+. .┊ ◟ヾ Total Xp : %totalexp
+. .╟─────────────  ✦ ⁺.
+. .┊﹒𐐪 Rutina : %muptime 
+. .┊ ◟﹫ Database : %totalreg
+   ╰─────────────  ✦ ⁺.
+⧣₊˚﹒✦₊  ⧣₊˚  𓂃★    ⸝⸝ ⧣₊˚﹒✦₊  ⧣₊˚
+˚⋆ᯓ★ 𝕽𝖔𝖑  𖦹.ᡣ𐭩˚ᝰ.ᐟ
+▣╾─✦──✦─🤍─✦──✦─╼▣
+${textbot} あ⁩!
+ %readmore
+\t\t\t_*LISTA DE MENÚS*_
 `.trimStart(),
-  header: '╭«★»-----『%category』-----«★»\n│╭«★»----------',
-  body: '│⋆⃟ۣۜ᭪➣%cmd %islimit %isPremium\n',
-  footer: '│╰«★»----------\n╰«★»------------------«★»\n',
-  after: `> 🚩 ${textbot}`,
+  header: '┏───「 *%category* 」',
+  body: '> %cmd %islimit %isPremium\n',
+  footer: '┗──────────━',
+  after: `© ${textbot}`,
 }
 
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
   try {
+     let tag = `@${m.sender.split("@")[0]}`
+    let mode = global.opts["self"] ? "Privado" : "Publico"
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
     let { exp, limit, level } = global.db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
@@ -138,29 +153,33 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
       after
     ].join('\n')
     let text = typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
-    let replace = {
-      '%': '%',
-      p: _p, uptime, muptime,
-      taguser: '@' + m.sender.split("@s.whatsapp.net")[0],
-      wasp: '@0',
-      me: conn.getName(conn.user.jid),
-      npmname: _package.name,
-      version: _package.version,
-      npmdesc: _package.description,
-      npmmain: _package.main,
-      author: _package.author.name,
-      license: _package.license,
-      exp: exp - min,
-      maxexp: xp,
-      totalexp: exp,
-      xp4levelup: max - exp,
-      github: _package.homepage ? _package.homepage.url || _package.homepage : '[unknown github url]',
-      greeting, level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg,
-      readmore: readMore
-    }
+   let replace = {
+ "%": "%",
+ p: _p,
+ uptime,
+ muptime,
+ me: conn.getName(conn.user.jid),
+ npmname: _package.name,
+ npmdesc: _package.description,
+ version: _package.version,
+ exp: exp - min,
+ maxexp: xp,
+ totalexp: exp,
+ xp4levelup: max - exp,
+ github: _package.homepage ? _package.homepage.url || _package.homepage : "[unknown github url]",
+ mode,
+ _p,
+ tag,
+ name,
+ level,
+ limit,
+ name,
+ totalreg,
+ readmore: readMore
+   }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     
-  let pp = 'https://telegra.ph/file/4c3e4b782c82511b3874d.mp4'
+    let pp = 'https://telegra.ph/file/4c3e4b782c82511b3874d.mp4'
     let pp2 = 'https://telegra.ph/file/d8c5e18ab0cfc10511f63.mp4'
     let pp3 = 'https://telegra.ph/file/96e471a87971e2fb4955f.mp4'
     let pp4 = 'https://telegra.ph/file/09b920486c3c291f5a9e6.mp4'
@@ -175,10 +194,10 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     let pp13 = 'https://telegra.ph/file/ba7c4a3eb7bf3d892b0c8.mp4'
     let pp14 = 'https://tinyurl.com/ymlqb6ml'
     let pp15 = 'https://tinyurl.com/ykv7g4zy'
-    let img = `./storage/img/menu.jpg`
-    await m.react('⭐')
+    let img = await (await fetch(`https://th.bing.com/th/id/R.61ee3e13c24b9bd973263687b644ba61?rik=1v2bMpUhoWwnCw&riu=http%3a%2f%2fi0.hdslb.com%2fbfs%2farchive%2f345b8558c2bef546408791b452f921212c10658a.jpg&ehk=OIVREZ9U3Nt%2f1yS2Ohv2AgzgFKEalp9FOYDQMOzqmUk%3d&risl=&pid=ImgRaw&r=0`)).buffer()
+    await m.react('✨')
    // await conn.sendMessage(m.chat, { video: { url: [pp, pp2, pp3, pp4, pp5, pp6, pp7, pp8, pp9, pp10, pp11, pp12, pp13, pp14, pp15].getRandom() }, gifPlayback: true, caption: text.trim(), mentions: [m.sender] }, { quoted: estilo })
-    await conn.sendFile(m.chat, img, 'thumbnail.jpg', text.trim(), m, null, rcanal)
+    await conn.sendFile(m.chat, img, 'thumbnail.jpg', Styles(text.trim()), m, null, rcanal)
    //await conn.sendAi(m.chat, botname, textbot, text.trim(), img, img, canal, estilo)
 
   } catch (e) {
@@ -189,7 +208,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
 
 handler.help = ['menu']
 handler.tags = ['main']
-handler.command = ['menu', 'help', 'menú'] 
+handler.command = ['menu', 'comandos'] 
 handler.register = true 
 export default handler
 
