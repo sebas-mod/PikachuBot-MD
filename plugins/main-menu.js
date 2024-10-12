@@ -46,7 +46,7 @@ let tags = {
 const defaultMenu = {
   before: `*•°•°•°•°•°•°•°•°•°•°•°*
           
-“ Hola *%name* *soy Pikachu-Bot-MD*, %greeting ”
+“ Hola *%name* soy Pikachu-Bot-MD,%greeting ”
 
 ╭«★»--------『info - Bot』--------«★»
 │╭───────────────···
