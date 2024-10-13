@@ -1,6 +1,6 @@
 {
-	"name": "Ai Hoshino",
-	"version": "6.0.0",
+	"name": "Pikachu-Bot",
+	"version": "1.0.0",
 	"description": "Simple WhatsApp Bot Multi Device",
 	"main": "starlights.js",
 	"type": "module",
@@ -27,7 +27,7 @@
 	],
 	"homepage": "https://github.com/StarlightsTeam/Ai-Hoshino",
 	"author": {
-		"name": "おDanịel.xyz⁩"
+		"name": "𝐒𝐞𝐛𝐚𝐬-𝐌𝐃"
 	},
 	"repository": {
 		"type": "git",
