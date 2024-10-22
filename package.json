@@ -25,16 +25,16 @@
 		"MD",
 		"baileys-md"
 	],
-	"homepage": "https://github.com/StarlightsTeam/Ai-Hoshino",
+	"homepage": "https://github.com/sebas-mod/PikachuBot-MD",
 	"author": {
 		"name": "𝐒𝐞𝐛𝐚𝐬-𝐌𝐃"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/StarlightsTeam/Ai-Hoshino.git"
+		"url": "git+https://github.com/sebas-mod/PikachuBot-MD.git"
 	},
 	"bugs": {
-		"url": "https://github.com/StarlightsTeam/Ai-Hoshino/issues"
+		"url": "https://github.com/sebas-mod/PikachuBot-MD/issues"
 	},
 	"license": "GPL-3.0-or-later",
 	"dependencies": {
