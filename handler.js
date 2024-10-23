@@ -112,7 +112,7 @@ export async function handler(chatUpdate) {
                     antitoxic:false,
                     detect:true,
                     onlyLatinos: false,
-                    modoadmin: false
+                    modoadmin: false,
                     nsfw: false, 
                     expired: 0, 
                 }
