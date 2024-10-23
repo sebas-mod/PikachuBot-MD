@@ -88,6 +88,8 @@ export async function handler(chatUpdate) {
                 if (!('bienvenida' in chat))
                     chat.bienvenida = true 
                 if (!('antiLink' in chat))
+                if (!('detect' in chat)) 
+                     chat.detect = true
                     chat.antiLink = false
                 if (!('onlyLatinos' in chat))
                     chat.onlyLatinos = false
@@ -107,6 +109,7 @@ export async function handler(chatUpdate) {
                 global.db.data.chats[m.chat] = {
                     isBanned: false,
                     bienvenida: true,
+                    detect: true,
                     antiLink: false,
                     antiver: false,
                     antitoxic:false,
@@ -121,9 +124,11 @@ export async function handler(chatUpdate) {
             if (settings) {
                 if (!('self' in settings)) settings.self = false
                 if (!('autoread' in settings)) settings.autoread = false
+                if (!('antiPrivate' in settings)) settings.antiPrivate = true
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
                 autoread: false,
+                antiPrivate: true,
                 status: 0
             }
         } catch (e) {
