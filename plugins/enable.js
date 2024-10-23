@@ -60,6 +60,41 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       }
        chat.detect = isEnable
      break
+
+      case 'antidelete': case 'antieliminar': case 'delete':
+       if (m.isGroup) {
+       if (!(isAdmin || isOwner)) {
+       global.dfail('admin', m, conn)
+       throw false
+       }}
+        chat.delete = isEnable
+       break
+
+      case 'antitoxic': case 'antitoxicos': case 'antimalos':
+      if (m.isGroup) {
+      if (!(isAdmin || isOwner)) {
+      global.dfail('admin', m, conn)
+     throw false
+     }}
+     chat.antitoxic = isEnable
+     break
+
+      case 'modoadmin': case 'soloadmin': case 'modeadmin':
+      if (m.isGroup) {
+     if (!(isAdmin || isOwner)) {
+    global.dfail('admin', m, conn)
+     chat.modoadmin = isEnable          
+      break
+
+       case 'antiprivado': case 'antiprivate':
+     case 'privado':
+     isAll = true
+    if (!isROwner) {
+   global.dfail('rowner', m, conn)
+   throw false
+   }
+   bot.antiPrivate = isEnable
+   break
       
       case 'nsfw':
       case 'modohorny':
