@@ -91,8 +91,16 @@ export async function handler(chatUpdate) {
                     chat.antiLink = false
                 if (!('onlyLatinos' in chat))
                     chat.onlyLatinos = false
-                 if (!('nsfw' in chat))
+                if (!('modoadmin' in chat)) 
+                    chat.modoadmin = false
+                if (!('nsfw' in chat))
                     chat.nsfw = false
+                if (!('antiver' in chat)) 
+                    chat.antiver = false
+                if (!('antitoxic' in chat)) 
+                    chat.antitoxic = false
+                if (!('detect' in chat)) 
+                    chat.detect = true
                 if (!isNumber(chat.expired))
                     chat.expired = 0
             } else
@@ -100,7 +108,11 @@ export async function handler(chatUpdate) {
                     isBanned: false,
                     bienvenida: true,
                     antiLink: false,
+                    antiver: false,
+                    antitoxic:false,
+                    detect:true,
                     onlyLatinos: false,
+                    modoadmin: false
                     nsfw: false, 
                     expired: 0, 
                 }
