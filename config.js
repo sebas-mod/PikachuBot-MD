@@ -42,8 +42,8 @@ global.catalogo = fs.readFileSync('./storage/img/catalogo.png')
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.group = ''
-global.canal = ''
+global.group = 'https://chat.whatsapp.com/DJkL87Jl3qFCRCUNt19UlO'
+global.canal = 'https://whatsapp.com/channel/0029VafHsEoBqbr3qlW1aX0U'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
