@@ -1,67 +1,41 @@
-import fetch from "node-fetch";
-import yts from "yt-search";
-
+import fetch from 'node-fetch';
+import yts from 'yt-search';
+import ytdl from 'ytdl-core';
+import axios from 'axios';
+import {youtubedl, youtubedlv2} from '@bochilteam/scraper';
 const handler = async (m, {conn, command, args, text, usedPrefix}) => {
-
-if (!text) return conn.reply(m.chat, `🚩 *Ingrese el nombre de un video de YouTube*\n\nEjemplo, !${command} Distancia - Kimberly Contreraxx`,  m, rcanal, )
-
-conn.reply(m.chat, global.wait, m, {
-contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
-title: packname,
-body: dev,
-previewType: 0, thumbnail: icons,
-sourceUrl: channel }}})
-
+if (!text) throw `_𝐄𝐬𝐜𝐫𝐢𝐛𝐞 𝐮𝐧𝐚 𝐩𝐞𝐭𝐢𝐜𝐢𝐨́𝐧 𝐥𝐮𝐞𝐠𝐨 𝐝𝐞𝐥 𝐜𝐨𝐦𝐚𝐧𝐝𝐨 𝐞𝐣𝐞𝐦𝐩𝐥𝐨:_ \n*${usedPrefix + command} Billie Eilish - Bellyache*`
 try { 
-await m.react(rwait)
 const yt_play = await search(args.join(' '))
-let txt = `*乂  Y O U T U B E  -  P L A Y  乂*\n\n`
-    txt += `🚩 *Titulo:*\n${yt_play[0].title}\n\n`
-    txt += `📅 *Publicado:*\n${yt_play[0].ago}\n\n`
-    txt += `🕜 *Duración:*\n${secondString(yt_play[0].duration.seconds)}\n\n`
-    txt += `📎 *Url:*\n${yt_play[0].url}`
+const texto1 = `
+╭ׅׄ̇─͓̗̗─ׅ̻ׄ╮۪̇߭⊹߭̇︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇߭︹ׅ۪ׄ̇߭̇⊹
+┟─⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪🅳🄴🅂🄲🄰🅁🄶🄰🅂໑⃪࣭۪ٜ݊݊݊݊𑁍ꥈ࣪⬪╮
+╭┄─🍂⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪🅼🄴🄶🅄🄼🄸🄽໑⃪࣭۪ٜ݊݊݊݊𑁍ꥈ࣪⬪╯
+├ ⚘݄𖠵⃕⁖𖥔. _*🅃𝕚𝕥𝕦𝕝𝕠*_
+├» ${yt_play[0].title}
+├ ⚘݄𖠵⃕⁖𖥔. _*🄿𝕦𝕓𝕝𝕚𝕔𝕒𝕕𝕠*_
+├» ${yt_play[0].ago}
+├ ⚘݄𖠵⃕⁖𖥔. _*🄳𝕦𝕣𝕒𝕔𝕚𝕠𝕟*_
+├» ${secondString(yt_play[0].duration.seconds)}
+├ ⚘݄𖠵⃕⁖𖥔. _*🅅𝕚𝕤𝕥𝕒𝕤*_
+├» ${MilesNumber(yt_play[0].views)}
+├ ⚘݄𖠵⃕⁖𖥔. _*🄰𝕦𝕥𝕠𝕣(𝕒)*_
+├» ${yt_play[0].author.name}
+├ ⚘݄𖠵⃕⁖𖥔. _*🄴𝕟𝕝𝕒𝕔𝕖*_
+├» ${yt_play[0].url}
+╰ׁ̻۫─۪۬─۟─۪─۫─۪۬─۟─۪─۟─۪۬─۟─۪─۟─۪۬─۟─۪─۟┄۪۬┄۟┄۪┈۟┈۪`.trim()
 
-let listSections = []
-listSections.push({
-title: `✎ SELECCIÓNA LO QUE NECESITES`, highlight_label: ``,
-rows: [
-{
-header: "𓆩࿔ྀુ⃟🌹⃟𝘼𝙐𝘿𝙄𝙊 ╎ 🎵",
-title: "",
-description: `🎵 Audio.`,
-id: `#play1 mp3 ${text}`,
-},
-{
-header: "𓆩࿔ྀુ⃟🌹⃟𝙑𝙄𝘿𝙀𝙊 ╎ 📽",
-title: "",
-description: `📽 Video.`,
-id: `#play1 mp4 ${text}`,
-},
-{
-header: "𓆩࿔ྀુ⃟🌹⃟𝘼𝙐𝘿𝙄𝙊𝘿𝙊𝘾 ╎ 🎵",
-title: "",
-description: `🎵 AudioDoc.`,
-id: `#play1 mp3doc ${text}`,
-},
-{
-header: "𓆩࿔ྀુ⃟🌹⃟𝙑𝙄𝘿𝙀𝙊𝘿𝙊𝘾 ╎ 📽",
-title: "",
-description: `📽 VideoDoc.`,
-id: `#play1 mp4doc ${text}`,
-},
-],
-})
-let menu = ''
-await conn.sendListB(m.chat, menu, txt, ` 𓏲᭨ ̤̤֟✧⏤͟͞ू⃪٭ۣۜ ፝͜⁞Oᴘᴄɪᴏɴᴇs ᭄፝🍟𑜟꙲𒁑⁩`, yt_play[0].thumbnail, listSections, m)
-await m.react(done)
-} catch {
-await m.react(error)
-await conn.reply(m.chat, `✘ *Ocurrío un error*`, m, rcanal)
+await conn.sendButton(m.chat, wm, texto1, yt_play[0].thumbnail, [['𝐌 𝐄 𝐍 𝐔 💥', `${usedPrefix}menu`],['🔥 𝗔 𝗨 𝗗 𝗜 𝗢',`${usedPrefix}play5 ${yt_play[0].url}`],['🔥 𝗩 𝗜 𝗗 𝗘 𝗢',`${usedPrefix}play6 ${yt_play[0].url}`]], null, null, fgif2)
+} catch (e) {
+await conn.reply(m.chat, `*[ ! ] ʜᴜʙᴏ ᴜɴ ᴇʀʀᴏʀ ᴇɴ ᴇʟ ᴄᴏᴍᴀɴᴅᴏ ᴘᴏʀ ғᴀᴠᴏʀ ɪɴᴛᴇɴᴛᴀ ᴍᴀs ᴛᴀʀᴅᴇ..*`, fkontak, m, rcanal)
+console.log(`❗❗ᴇʀʀᴏʀ ${usedPrefix + command} ❗❗`)
+console.log(e)
+handler.limit = 0
 }}
-handler.help = ['play', 'play2'];
-handler.tags = ['descargas'];
 handler.command = ['play', 'play2']
-handler.register = true;
+//handler.limit = 3
+handler.register = true 
+handler.group = true
 export default handler;
 
 async function search(query, options = {}) {
