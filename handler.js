@@ -78,62 +78,110 @@ export async function handler(chatUpdate) {
                     useDocument: true,
                     bank: 0,
                     level: 0,
-                }
-            let chat = global.db.data.chats[m.chat]
-            if (typeof chat !== 'object')
-                global.db.data.chats[m.chat] = {}
-            if (chat) {
-                if (!('isBanned' in chat))
-                    chat.isBanned = false
-                if (!('bienvenida' in chat))
-                    chat.bienvenida = false 
-                if (!('antiLink' in chat))
-                if (!('detect' in chat)) 
-                     chat.detect = true
-                    chat.antiLink = false
-                if (!('onlyLatinos' in chat))
-                    chat.onlyLatinos = false
-                if (!('modoadmin' in chat)) 
-                    chat.modoadmin = false
-                if (!('nsfw' in chat))
-                    chat.nsfw = false
-                if (!('antiver' in chat)) 
-                    chat.antiver = false
-                if (!('antitoxic' in chat)) 
-                    chat.antitoxic = false
-                if (!('detect' in chat)) 
-                    chat.detect = true
-                if (!isNumber(chat.expired))
-                    chat.expired = 0
-            } else
-                global.db.data.chats[m.chat] = {
-                    isBanned: false,
-                    bienvenida: false,
-                    detect: true,
-                    antiLink: false,
-                    antiver: false,
-                    antitoxic:false,
-                    detect:true,
-                    onlyLatinos: false,
-                    modoadmin: false,
-                    nsfw: false, 
-                    expired: 0, 
-                }
-            var settings = global.db.data.settings[this.user.jid]
-            if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
-            if (settings) {
-                if (!('self' in settings)) settings.self = false
-                if (!('autoread' in settings)) settings.autoread = false
-                if (!('antiPrivate' in settings)) settings.antiPrivate = true
-            } else global.db.data.settings[this.user.jid] = {
-                self: false,
-                autoread: false,
-                antiPrivate: true,
-                status: 0
-            }
-        } catch (e) {
-            console.error(e)
-        }
+     }                   
+let chat = global.db.data.chats[m.chat]
+if (typeof chat !== 'object')
+global.db.data.chats[m.chat] = {}
+
+if (chat) {
+if (!('isBanned' in chat)) chat.isBanned = false         
+if (!('welcome' in chat)) chat.welcome = true           
+if (!('detect' in chat)) chat.detect = true               
+if (!('sWelcome' in chat)) chat.sWelcome = ''          
+if (!('sBye' in chat)) chat.sBye = ''                    
+if (!('sPromote' in chat)) chat.sPromote = ''             
+if (!('sDemote' in chat)) chat.sDemote = '' 
+if (!('sCondition' in chat)) chat.sCondition = JSON.stringify([{ grupo: { usuario: [], condicion: [], admin: '' }, prefijos: []}])
+if (!('delete' in chat)) chat.delete = false                   
+if (!('modohorny' in chat)) chat.modohorny = false                   
+if (!('autosticker' in chat)) chat.autosticker = false      
+if (!('audios' in chat)) chat.audios = false               
+if (!('antiver' in chat)) chat.antiver = false 
+if (!('antiPorn' in chat)) chat.antiPorn = false     
+if (!('antiLink' in chat)) chat.antiLink = true     
+if (!('antiLink2' in chat)) chat.antiLink2 = false
+if (!('antiTiktok' in chat)) chat.antiTiktok = false
+if (!('antiYoutube' in chat)) chat.antiYoutube = false
+if (!('antiTelegram' in chat)) chat.antiTelegram = false
+if (!('antiFacebook' in chat)) chat.antiFacebook = false
+if (!('antiInstagram' in chat)) chat.antiInstagram = false
+if (!('antiTwitter' in chat)) chat.antiTwitter = false
+if (!('antiDiscord' in chat)) chat.antiDiscord = false
+if (!('antiThreads' in chat)) chat.antiThreads = false
+if (!('antiTwitch' in chat)) chat.antiTwitch = false
+if (!('antifake' in chat)) chat.antifake = false
+if (!('reaction' in chat)) chat.reaction = false  
+if (!('viewonce' in chat)) chat.viewonce = false       
+if (!('modoadmin' in chat)) chat.modoadmin = false    
+if (!('antitoxic' in chat)) chat.antitoxic = false
+if (!('simi' in chat)) chat.simi = false
+if (!('antiTraba' in chat)) chat.antiTraba = false
+if (!('autolevelup' in chat))  chat.autolevelup = false
+if (!isNumber(chat.expired)) chat.expired = 0
+} else
+global.db.data.chats[m.chat] = {
+isBanned: false,
+welcome: true,
+detect: true,
+sWelcome: '',
+sBye: '',
+sPromote: '',
+sDemote: '', 
+sCondition: JSON.stringify([{ grupo: { usuario: [], condicion: [], admin: '' }, prefijos: []}]), 
+delete: false,
+modohorny: false,
+autosticker: false,
+audios: false,
+antiver: false,
+antiPorn: false,
+antiLink: true,
+antiLink2: false,
+antiTiktok: false,
+antiYoutube: false,
+antiTelegram: false,
+antiFacebook: false,
+antiInstagram: false,
+antiTwitter: false,
+antiDiscord: false,
+antiThreads: false,
+antiTwitch: false,
+antifake: false,
+reaction: false,
+viewonce: false,
+modoadmin: false,
+antitoxic: false, 
+simi: false,
+antiTraba: false,
+autolevelup: false,
+expired: 0,
+}
+let settings = global.db.data.settings[this.user.jid]
+if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
+if (settings) {
+if (!('self' in settings)) settings.self = false
+if (!('autoread' in settings)) settings.autoread = false
+if (!('autoread2' in settings)) settings.autoread2 = false
+if (!('restrict' in settings)) settings.restrict = false
+if (!('antiPrivate' in settings)) settings.antiPrivate = true
+if (!('antiCall' in settings)) settings.antiCall = true
+if (!('antiSpam' in settings)) settings.antiSpam = true
+if (!('modoia' in settings)) settings.modoia = false
+if (!('jadibotmd' in settings)) settings.jadibotmd = false  
+if (!('autobio' in settings)) settings.autobio = false
+} else global.db.data.settings[this.user.jid] = {
+self: false,
+autoread: false,
+autoread2: false,
+restrict: false,
+antiPrivate: true,
+antiCall: true,
+antiSpam: true,
+modoia: false, 
+jadibotmd: true,
+autobio: false,
+}} catch (e) {
+console.error(e)
+}
         if (opts['nyimak'])  return
         if (!m.fromMe && opts['self'])  return
         if (opts['swonly'] && m.chat !== 'status@broadcast')  return
