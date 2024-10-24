@@ -398,7 +398,7 @@ default:
 if (!/[01]/.test(command)) return await conn.reply(m.chat, luffyopcion, m, rcanal);
 throw false;
 }
-conn.reply(m.chat, `text: `🗂️ 𝐎𝐏𝐂𝐈𝐎𝐍: ${type}\n🎚️ 𝐄𝐒𝐓𝐀𝐃𝐎: ${isEnable ? 'ACTIVADO' : 'DESACTIVADO'}\n📣 𝐏𝐀𝐑𝐀: ${isAll ? 'ESTE BOT' : isUser ? '' : 'ESTE CHAT'}*`, m, rcanal, );
+conn.reply(m.chat, ` ⋆⃟ۣۜ᭪➣*La Función ${type} ha sido ${isEnable ? 'Activado' : 'Desactivado'} En Este ${isAll ? 'Bot' : isUser ? '' : 'Chat.'}*`, m, rcanal, )
 
 }
 handler.help = ['en', 'dis'].map((v) => v + 'able <option>');
