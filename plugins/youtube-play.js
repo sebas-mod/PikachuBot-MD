@@ -10,11 +10,12 @@ var sebas = async (m,{
         throw m.reply("ingresa el nombre de la cancion")
     }
 try { 
+    m.reply('aguarse un momento su audio está cargando 🫡✨.')
     let video_yts = await yts(text);
     let menu_de_videos = video_yts.all;
     let video_seleccionado = menu_de_videos[0]
     let url_video_yt = video_seleccionado.url
-    m.reply('aguarse un momento su audio está cargando 🫡✨'
+
     let api_url = `https://ngapain-jir.vercel.app/api/download/youtube?text=${text}`
 let resultado = await (await fetch(api_url)).json();
     let primer_resultado_api = resultado.result[0]; 
