@@ -40,11 +40,11 @@ await conn.sendMessage(m.chat, {
     }, { quoted: m });
 
 await conn.sendMessage(m.chat, { audio: { url: audio }, fileName: title + '.mp3', mimetype: 'audio/mp4' }, { quoted: m })
-// await conn.sendFile(m.chat,
+/*await conn.sendFile(m.chat,
  audio, 
  title + '.mp3', 
  title + '.mp3', 
- m)/
+ m)*/
 } catch (error) {
 console.log(e)
 m.reply("no se puede descargar el audio.") 
