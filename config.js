@@ -35,7 +35,7 @@ global.botname = '𝐏𝐢𝐤𝐚𝐜𝐡𝐮𝐁𝐨𝐭-𝐌𝐃'
 global.textbot = `By 𝐒𝐞𝐛𝐚𝐬-𝐌𝐃`
 global.listo = '*Aqui tiene ฅ^•ﻌ•^ฅ*'
 global.namechannel = '𝐏𝐢𝐤𝐚𝐜𝐡𝐮𝐁𝐨𝐭-𝐌𝐃'
-global.wm = '𝗚𝗲𝗻𝗲𝘀𝗶𝘀 𝗜𝗔'
+global.wm = '𝐏𝐢𝐤𝐚𝐜𝐡𝐮𝐁𝐨𝐭-𝐌𝐃'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
