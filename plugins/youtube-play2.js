@@ -71,6 +71,6 @@ let handler = async (m, { conn, args }) => {
 
 handler.help = ["solyptube"].map(v => `${v} <url> [calidad]`)
 handler.tags = ["downloader"]
-handler.command = /^(solyptube/play2)$/i
+handler.command = /^(solyptube)$/i
 
 export default handler
