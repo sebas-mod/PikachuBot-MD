@@ -29,6 +29,16 @@ let {
 audio, 
 video,
 } = download;
+    let texto = `_${title}_
+
+- Duración: ${durasi}
+
+${description}`;
+await conn.sendMessage(m.chat, { 
+      image: { url: thumbnail },  
+      caption: texto 
+    }, { quoted: m });
+    
 await conn.sendMessage(m.chat, {
     audio: { url: audio},
     mimeType: "audio/mp4",
