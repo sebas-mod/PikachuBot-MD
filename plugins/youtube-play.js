@@ -39,7 +39,7 @@ await conn.sendMessage(m.chat, {
       caption: texto 
     }, { quoted: m });
 
-await conn.sendMessage(m.chat, { audio: { url: audio }, mimetype: "audio/mp4", fileName: title + '.mp3', quoted: m)
+await conn.sendMessage(m.chat, { audio: { url: audio }, fileName: title + '.mp3', mimetype: 'audio/mp4' }, { quoted: m })
 // await conn.sendFile(m.chat,
  audio, 
  title + '.mp3', 
