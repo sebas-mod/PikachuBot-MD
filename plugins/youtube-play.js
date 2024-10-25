@@ -14,7 +14,7 @@ try {
     let menu_de_videos = video_yts.all;
     let video_seleccionado = menu_de_videos[0]
     let url_video_yt = video_seleccionado.url
-    
+
     let api_url = `https://ngapain-jir.vercel.app/api/download/youtube?text=${text}`
 let resultado = await (await fetch(api_url)).json();
     let primer_resultado_api = resultado.result[0]; 
@@ -28,7 +28,7 @@ download,
 let { 
 audio, 
 video,
-} = download;
+} = download;
     let texto = `_${title}_
 
 - Duración: ${durasi}
@@ -38,11 +38,12 @@ await conn.sendMessage(m.chat, {
       image: { url: thumbnail },  
       caption: texto 
     }, { quoted: m });
-    
-await conn.sendMessage(m.chat, {
-    audio: { url: audio},
-    mimeType: "audio/mp4",
-    }, {quoted: m });
+
+await conn.sendFile(m.chat,
+ audio, 
+ title + '.mp3', 
+ title + '.mp3', 
+ m)
 } catch (error) {
 console.log(e)
 m.reply("no se puede descargar el audio.") 
