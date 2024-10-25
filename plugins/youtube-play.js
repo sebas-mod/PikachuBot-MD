@@ -10,7 +10,7 @@ var sebas = async (m,{
         throw m.reply("ingresa el nombre de la cancion")
     }
 try { 
-    m.reply('aguarse un momento su audio está cargando 🫡✨.')
+    m.reply('*aguarse un momento su audio está cargando 🫡✨*.')
     let video_yts = await yts(text);
     let menu_de_videos = video_yts.all;
     let video_seleccionado = menu_de_videos[0]
